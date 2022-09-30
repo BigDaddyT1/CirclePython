@@ -11,33 +11,29 @@ This repository will actually serve as a aid to help you get started with your o
 ## Hello_CircuitPython
 
 ### Description & Code
-Description goes here
+Make the led blind and display diffrent colors 
+```python
+import board
+import neopixel
 
+dot = neopixel.NeoPixel(board.NEOPIXEL, 1)
+dot.brightness = 0.9
 
-    
-    
+print("Make it red!")
 
-    print (r,g,b)
-    dot.fill((r,g,b))
-    time.sleep (0.05)
+while True:
+    dot.fill((255, 0, 255))
+
 ```
 
 
 ### Evidence
+https://user-images.githubusercontent.com/113116205/193277510-51cd98da-7194-460c-923c-f6c57916cff6.mov
 
-
-![spinningMetro_Optimized](https://user-images.githubusercontent.com/54641488/192549584-18285130-2e3b-4631-8005-0792c2942f73.gif)
-
-
-And here is how you should give image credit to someone, if you use their work:
-
-Image credit goes to [Rick A](https://www.youtube.com/watch?v=dQw4w9WgXcQ&scrlybrkr=8931d0bc)
-
-
+image credit goes to [ Nick P](https://github.com/nbednar2929/CircuitPython)
 
 ### Wiring
-Make an account with your google ID at [tinkercad.com](https://www.tinkercad.com/learn/circuits), and use "TinkerCad Circuits to make a wiring diagram."  It's really easy!  
-Then post an image here.   [here's a quick tutorial for all markdown code, like making links](https://guides.github.com/features/mastering-markdown/)
+there was no wiring requierd it was only the use of the metro express
 
 ### Reflection
 The hardest thing about this part of this project was the code part and getting the color to change at diffret distances in the project. And the fact that i kept having to go in and change things constantly when it was just a simple camma made my life way harder than it had to be. Overall now i undrstand what ground is and how it works with making things work.
@@ -48,20 +44,49 @@ The hardest thing about this part of this project was the code part and getting 
 ## CircuitPython_Servo
 
 ### Description & Code
+Assignment: Get a 180° micro servo to slowly sweep back and forth between 0 and 180°.   Spicy part: Now control the servo with buttons. 
 
+Extra Spicy:  Control the servo with just 2 raw wires (no buttons, etc), using some awesome tech called "capacitive touch!" 
 ```python
-Code goes here
+# SPDX-FileCopyrightText: 2018 Kattni Rembor for Adafruit Industries
+#
+# SPDX-License-Identifier: MIT
+
+"""CircuitPython Essentials Servo standard servo example"""
+import time
+import board
+import pwmio
+from adafruit_motor import servo
+
+# create a PWMOut object on Pin A2.
+pwm = pwmio.PWMOut(board.D8, duty_cycle=2 ** 15, frequency=50)
+
+# Create a servo object, my_servo.
+my_servo = servo.Servo(pwm)
+
+while True:
+    for angle in range(0, 180, 5):  # 0 - 180 degrees, 5 degrees at a time.
+        my_servo.angle = angle
+        time.sleep(0.05)
+    for angle in range(180, 0, -5): # 180 - 0 degrees, 5 degrees at a time.
+        my_servo.angle = angle
+        time.sleep(0.05)
 
 ```
 
 ### Evidence
 
-Pictures / Gifs of your work should go here.  You need to communicate what your thing does.
+
+https://user-images.githubusercontent.com/113116205/193280881-95fc62a1-6e4d-4037-910c-9e835337cc94.mp4
+
+
 
 ### Wiring
+![193046598-dc07286b-8199-4008-a6be-15ca5dddda87](https://user-images.githubusercontent.com/113116205/193279246-1bdcef29-3793-4aa1-8a2b-57f2e2336061.png)
 
+image credit goes to [ jack h](https://github.com/jhelmke45/CircuitPython)
 ### Reflection
-
+this code waspretty easy because all you had to do was do the code once abd duplicate it and then change the and to reverse and go backwords the opposite way and buttons were very fun to play wwith as well.
 
 
 
@@ -146,6 +171,7 @@ Code goes here
 
 ### Evidence
 ![distance sensor](https://im4.ezgif.com/tmp/ezgif-4-5d4eb8646d.gif)
+
 ### Wiring
 ![WIN_20220929_09_39_10_Pro](https://user-images.githubusercontent.com/113116205/193047288-5445088d-7f41-438e-9c31-efef13f636ea.jpg)
 
