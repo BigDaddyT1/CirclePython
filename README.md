@@ -93,20 +93,70 @@ this code waspretty easy because all you had to do was do the code once abd dupl
 ## CircuitPython_LCD
 
 ### Description & Code
+The Assignment:
 
+Use your fancy new LCD screen for output and make two inputs (buttons, switches, capacitive touch??)  
+Tripping one of the inputs will cause your Metro to count and that count will be displayed on the LCD. 
+Touching the other input should toggle whether your Metro is counting up or down. 
+The count direction should also be displayed on the LCD.  
 ```python
-Code goes here
+
+import board
+from lcd.lcd import LCD
+from lcd.i2c_pcf8574_interface import I2CPCF8574Interface
+import time
+from digitalio import DigitalInOut, Direction, Pull
+
+# get and i2c object
+i2c = board.I2C()
+btn = DigitalInOut(board.D2)
+btn.direction = Direction.INPUT
+btn.pull = Pull.UP
+clickCount = 0
+
+switch = DigitalInOut(board.D7)
+switch.direction = Direction.INPUT
+switch.pull = Pull.UP
+# some LCDs are 0x3f... some are 0x27...
+lcd = LCD(I2CPCF8574Interface(i2c, 0x27), num_rows=2, num_cols=16)
+
+lcd.print("on")
+print("son, i am disapoint.")
+while True:
+    if not switch.value:
+        if not btn.value:
+            lcd.clear()
+            lcd.set_cursor_pos(0, 0)
+            lcd.print("Click Count:")
+            lcd.set_cursor_pos(0,13)
+            clickCount = clickCount + 1
+            lcd.print(str(clickCount))
+        else:
+            pass
+    else:
+        if not btn.value:
+            lcd.clear()
+            lcd.set_cursor_pos(0, 0)
+            lcd.print("Click Count:")
+            lcd.set_cursor_pos(0,13)
+            clickCount = clickCount - 1
+            lcd.print(str(clickCount))
+        else:
+            pass
+    time.sleep(0.1) # sleep for debounce
 
 ```
+Eligah helped me build my code so he gets credit 
 
 ### Evidence
-
-Pictures / Gifs of your work should go here.  You need to communicate what your thing does.
+![193345352-4096a970-db47-4673-9544-dc9b4a12b061](https://user-images.githubusercontent.com/113116205/193828477-2783f1ba-ee4e-47db-8fad-5688ba9ee2b4.gif)
+image credit goes to [ sahana g ](https://github.com/sgupta70/CircuitPython#CircuitPython_LCD)
 
 ### Wiring
+![WIN_20221004_09_16_51_Pro](https://user-images.githubusercontent.com/113116205/193829316-6ca97b57-b974-4309-9832-44bd76cc9d0a.jpg)
 
 ### Reflection
-
+this was the hardest assignment of all because it used all of the components of our first 3 assighnments but it made it way eisier in the end. plus i learned how to brighten and dim the led screen on the back of the lcd
 
 
 
