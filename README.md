@@ -2,41 +2,37 @@
 This repository will actually serve as a aid to help you get started with your own template.  You should copy the raw form of this readme into your own, and use this template to write your own.  If you want to draw inspiration from other classmates, feel free to check [this directory of all students!](https://github.com/chssigma/Class_Accounts).
 ## Table of Contents
 * [Table of Contents](#TableOfContents)
-* [Hello_CircuitPython](#Hello_CircuitPython)
+* [Hello_CircuitPython](#Multi-Part Design Studios)
 * [CircuitPython_Servo](#CircuitPython_Servo)
 * [CircuitPython_LCD](#CircuitPython_LCD)
 * [NextAssignmentGoesHere](#NextAssignment)
 ---
 
-## Hello_CircuitPython
+## Multi-Part Design Studios
 
-### Description & Code
-Make the led blind and display diffrent colors 
-```python
-import board
-import neopixel
-
-dot = neopixel.NeoPixel(board.NEOPIXEL, 1)
-dot.brightness = 0.9
-
-print("Make it red!")
-
-while True:
-    dot.fill((255, 0, 255))
-
-```
-
+### Description 
+This assignment was to get us ready for our assesment next year. we are given very few instructions and told to build and desighn a vacume pump and answer the 4 questions that change the design of the pump as we go along.
 
 ### Evidence
-https://user-images.githubusercontent.com/113116205/193277510-51cd98da-7194-460c-923c-f6c57916cff6.mov
+![image](https://user-images.githubusercontent.com/113116205/197536954-d00b942e-8d95-42f8-b009-62de2c62123c.png)
+- for this part it is given to us and we are suppost to build everything around the cylinder
 
-image credit goes to [ Nick P](https://github.com/nbednar2929/CircuitPython)
+![image](https://user-images.githubusercontent.com/113116205/197537364-cdde62e2-0eec-4e74-bab9-b28e17a55e93.png)
+- for this part we are suppost to build a top and bottom to the vacume pump and are told to build the bottom forst because we can just copy and mirrir across the middle plane. We designed a 100 * 100 square and added holes into the corner and did a semetric mate with a second end postition. we made one side 10mm and the other 48 making the whole thing 58 mm. the mirrored it across the middle of the cylinder. 
 
-### Wiring
-there was no wiring requierd it was only the use of the metro express
+![image](https://user-images.githubusercontent.com/113116205/197538405-f6e8250e-9e00-46dd-8e58-f2909b328af6.png)
+- For this part we are supposed to add the actual plunger to the inside of the cylinder making it 125 mm long and adding a flat surface to the end of the plunger making it 130mm in total.
 
+![image](https://user-images.githubusercontent.com/113116205/197539216-6da11d5e-81ac-4225-af8c-dc4258fe8790.png)
+- for this part we just added on to the actuall plunger part. then we exruded and made it one big solid cylinder then drew on the top and the side of the new peice. Cut on the side and cut out one big peice at the top making the plunger peice one big peice. Then decided to add all the fillets to all the peices.
+
+![image](https://user-images.githubusercontent.com/113116205/197539791-cf171e92-978a-45ae-b869-c7de35e247ea.png)
+- these are the Rods. I add them at the end because it is the easiest peice making them 195 mm long almost filling the hole completlly.
+
+![image](https://user-images.githubusercontent.com/113116205/197542796-5dda4f07-e8b9-43c8-a9a8-234420b2a026.png)
+- This is a finished section view of my finished product.
 ### Reflection
-The hardest thing about this part of this project was the code part and getting the color to change at diffret distances in the project. And the fact that i kept having to go in and change things constantly when it was just a simple camma made my life way harder than it had to be. Overall now i undrstand what ground is and how it works with making things work.
+The hardest thing about this part of this project was making sure the weight was the right weight because if it was not then you would have to go through every part and make sure everything was right and that was very time cosuming. And it wa very challanging at some points making sure everything was mated and in the right places at some points but overall it was a fun project to build.
 
 
 
