@@ -1,9 +1,9 @@
-# CircuitPython
+# CAD
 This repository will actually serve as a aid to help you get started with your own template.  You should copy the raw form of this readme into your own, and use this template to write your own.  If you want to draw inspiration from other classmates, feel free to check [this directory of all students!](https://github.com/chssigma/Class_Accounts).
 ## Table of Contents
 * [Table of Contents](#TableOfContents)
 * [Hello_CircuitPython](#Multi-Part Design Studios)
-* [CircuitPython_Servo](#CircuitPython_Servo)
+* [CircuitPython_Servo](#Swing-Arm)
 * [CircuitPython_LCD](#CircuitPython_LCD)
 * [NextAssignmentGoesHere](#NextAssignment)
 ---
@@ -35,192 +35,59 @@ This assignment was to get us ready for our assesment next year. we are given ve
 The hardest thing about this part of this project was making sure the weight was the right weight because if it was not then you would have to go through every part and make sure everything was right and that was very time cosuming. And it wa very challanging at some points making sure everything was mated and in the right places at some points but overall it was a fun project to build.
 
 
-
-
-## CircuitPython_Servo
+## Swing Arm 
 
 ### Description & Code
-Assignment: Get a 180° micro servo to slowly sweep back and forth between 0 and 180°.   Spicy part: Now control the servo with buttons. 
+Introduction:
 
-Extra Spicy:  Control the servo with just 2 raw wires (no buttons, etc), using some awesome tech called "capacitive touch!" 
-```python
-# SPDX-FileCopyrightText: 2018 Kattni Rembor for Adafruit Industries
-#
-# SPDX-License-Identifier: MIT
+One of the goals of this class is to get ready to earn your Certified Onshape Associate certification. This is a timed test that requires mastery of many different CAD concepts. As Engineering 3 students we worked extensively with CAD, but may have a different level of mastery from other students. This assignment will help determine what additional concepts you need to focus on for the certification exam. 
 
-"""CircuitPython Essentials Servo standard servo example"""
-import time
-import board
-import pwmio
-from adafruit_motor import servo
-
-# create a PWMOut object on Pin A2.
-pwm = pwmio.PWMOut(board.D8, duty_cycle=2 ** 15, frequency=50)
-
-# Create a servo object, my_servo.
-my_servo = servo.Servo(pwm)
-
-while True:
-    for angle in range(0, 180, 5):  # 0 - 180 degrees, 5 degrees at a time.
-        my_servo.angle = angle
-        time.sleep(0.05)
-    for angle in range(180, 0, -5): # 180 - 0 degrees, 5 degrees at a time.
-        my_servo.angle = angle
-        time.sleep(0.05)
-
-```
+Assignment:
+we are told to create a swing arm given very few instructions and are told he first two tabs contain instructions, and the last four contain the drawings you will use to create the part. Create a new part studio and rename it swing arm. Design the part using the four drawings as a guide. Notice that three dimensions are not defined directly. These dimensions will change values, so it is a good idea to define them as variables so that you can easily change them later.
+Update the model based on the dimensions and materials listed in the instructions tab of the Swing Arm.
 
 ### Evidence
+![image](https://user-images.githubusercontent.com/113116205/197785543-7c8b491f-8cb4-4519-8f31-3b4dda5a2ec8.png)
+- this is a picture of my final sketch of My swing arm peice we are given very little informatiojn and have to find the angles to find ot how long the arms are and the big and small circles are in the middle of the whole design. 
+
+![image](https://user-images.githubusercontent.com/113116205/197788014-370df01a-62da-4ffa-91bc-7f47d993881e.png)
+
+-this is the right side veiw of the finished project with all the mates and the symetry exrudes and the cutouts of the front arm and the bottom arm
+
+![image](https://user-images.githubusercontent.com/113116205/197790969-287e2d5a-42c3-453d-bca0-4edb1908a8c5.png)
+
+-this is the left side veiw of the finished project with all the mates and the symetry exrudes and the cutouts of the front arm and the bottom arm
 
 
-https://user-images.githubusercontent.com/113116205/193280881-95fc62a1-6e4d-4037-910c-9e835337cc94.mp4
 
-
-
-### Wiring
-![193046598-dc07286b-8199-4008-a6be-15ca5dddda87](https://user-images.githubusercontent.com/113116205/193279246-1bdcef29-3793-4aa1-8a2b-57f2e2336061.png)
-
-image credit goes to [ jack h](https://github.com/jhelmke45/CircuitPython)
 ### Reflection
-this code waspretty easy because all you had to do was do the code once abd duplicate it and then change the and to reverse and go backwords the opposite way and buttons were very fun to play wwith as well.
+The hardest thing about this part of this project was making sure the weight was the right weight because if it was not then you would have to go through every part and make sure everything was right and that was very time cosuming. And it wa very challanging at some points making sure everything was extruded and all the edges were fileted because without that the weight was thrown of several times and it was very time consuming figuring out whaat the problem was when it was that small. overall it was a fun project to build but also very anoying to finish.
 
 
 
-## CircuitPython_LCD
+## Teamwork Makes the Dream Work 
 
 ### Description & Code
 The Assignment:
-
-Use your fancy new LCD screen for output and make two inputs (buttons, switches, capacitive touch??)  
-Tripping one of the inputs will cause your Metro to count and that count will be displayed on the LCD. 
-Touching the other input should toggle whether your Metro is counting up or down. 
-The count direction should also be displayed on the LCD.  
-```python
-
-import board
-from lcd.lcd import LCD
-from lcd.i2c_pcf8574_interface import I2CPCF8574Interface
-import time
-from digitalio import DigitalInOut, Direction, Pull
-
-# get and i2c object
-i2c = board.I2C()
-btn = DigitalInOut(board.D2)
-btn.direction = Direction.INPUT
-btn.pull = Pull.UP
-clickCount = 0
-
-switch = DigitalInOut(board.D7)
-switch.direction = Direction.INPUT
-switch.pull = Pull.UP
-# some LCDs are 0x3f... some are 0x27...
-lcd = LCD(I2CPCF8574Interface(i2c, 0x27), num_rows=2, num_cols=16)
-
-lcd.print("on")
-print("son, i am disapoint.")
-while True:
-    if not switch.value:
-        if not btn.value:
-            lcd.clear()
-            lcd.set_cursor_pos(0, 0)
-            lcd.print("Click Count:")
-            lcd.set_cursor_pos(0,13)
-            clickCount = clickCount + 1
-            lcd.print(str(clickCount))
-        else:
-            pass
-    else:
-        if not btn.value:
-            lcd.clear()
-            lcd.set_cursor_pos(0, 0)
-            lcd.print("Click Count:")
-            lcd.set_cursor_pos(0,13)
-            clickCount = clickCount - 1
-            lcd.print(str(clickCount))
-        else:
-            pass
-    time.sleep(0.1) # sleep for debounce
-
-```
-Eligah helped me build my code so he gets credit 
+THIS Project we are challanged to make a spinner with a partner and we are both given parts A or B and i was given part a And jacob my partner was guven part b.
 
 ### Evidence
-![193345352-4096a970-db47-4673-9544-dc9b4a12b061](https://user-images.githubusercontent.com/113116205/193828477-2783f1ba-ee4e-47db-8fad-5688ba9ee2b4.gif)
-image credit goes to [ sahana g ](https://github.com/sgupta70/CircuitPython#CircuitPython_LCD)
+![image](https://user-images.githubusercontent.com/113116205/197800218-81f4e5bc-f113-4784-8067-709611333207.png)
 
-### Wiring
-![WIN_20221004_09_16_51_Pro](https://user-images.githubusercontent.com/113116205/193829316-6ca97b57-b974-4309-9832-44bd76cc9d0a.jpg)
+- this is the The finished version of the top and ring price that will ultamatlly when added with the key will make the spinner fly out of the top and start to spin we are given the ring peice and told to build to top peice over it and mate it to the key part it was very simple. we extrude and fillet the sides and then were done with the peice.
 
-### Reflection
-this was the hardest assignment of all because it used all of the components of our first 3 assighnments but it made it way eisier in the end. plus i learned how to brighten and dim the led screen on the back of the lcd
+![image](https://user-images.githubusercontent.com/113116205/197800325-69547bd7-9d40-444f-9688-63e1b6ece6eb.png)
 
+- this is a finished picture of our key we designed this whole part making the the circillar end first then adding a long rectangle and then adding the teeth with a champher which made it way easier. Ten that peice is revolve mated to the edge of the top part of the key.
 
 
+![image](https://user-images.githubusercontent.com/113116205/197802530-3909837d-b19d-4db9-a056-a1e26e58ee9a.png)
 
-## NextAssignment
+- my partner made the prop while we both deighned the actuall spinner peices because we both had to add difrent types oo spinner tops to make the top difrent types of tops. and i would say desighning all the difrent types of tops was the most time consuming thing but the mos fun out of all of them.
+![image](https://user-images.githubusercontent.com/113116205/197802646-8c78273e-2be7-46c9-9f59-9c13082f5e12.png)
 
-### Description & Code
-Use the HC-SR04 to measure the distance to an object and print that out to your serial monitor or LCD in cm.
-Next, you will get the neopixel to turn red when your object is less than 5cm, blue when between 5 and 20cm, and green when farther than 20cm.
-For your final version of this code, you'll smoothly shift the color of the onboard neopixel, corresponding to the distance, according to the graphic below.
-(Neopixel should stay red when below 5cm and green when above 35cm)
-Here's how you make code look like code:
+- this is a finished deighn of the pull copter 
 
-```python
-Code goes here
-##Troy Brown
-##DistanceSensor 
-##this code will madke the LED change colors depending on the distance from the sensor
-
-import board
-import time 
-import neopixel
-import adafruit_hcsr04
-import simpleio
-sonar = adafruit_hcsr04.HCSR04(trigger_pin=board.D5, echo_pin=board.D6)
-dot = neopixel.NeoPixel(board.NEOPIXEL, 1)
-dot.brightness = 0.5
-
-while True:
-
-    try:
-        distance = sonar.distance
-        (print (distance))
-    except RuntimeError:
-        print("Retrying!") 
-        time.sleep(0.1)
-
-    if distance < 5: ## if distance is less than 5cm then the light will turn red
-        r = 255
-        g = 0 
-        b = 0 
-        print("<5")
-    elif distance < 25 and distance > 20: ## if the distance is greater than 5cm and less than 20cm the led goes from red to blue  
-        r = int(simpleio.map_range(distance, 5, 20, 255, 0))
-        g = int(0)
-        b = int(simpleio.map_range(distance, 5, 20, 0, 255))
-        print(">5<20")
-    elif distance < 20 and distance > 35: ## if the distance is greater than 20cm and less than 30cm the led goes from blue to green 
-        r = int(0)
-        g = int(simpleio.map_range(distance, 20, 35, 0, 255))
-        b = int(simpleio.map_range(distance, 20, 35, 255, 0))
-        print(">20<35")
-    elif distance > 35: ## if the distance is greater than 35cm the led is green 
-        r = 0 
-        g = 255
-        b = 0
-        print(">35")
-```python
-Code goes here
-
-```
-
-### Evidence
-![distance sensor](https://im4.ezgif.com/tmp/ezgif-4-5d4eb8646d.gif)
-
-### Wiring
-![WIN_20220929_09_39_10_Pro](https://user-images.githubusercontent.com/113116205/193047288-5445088d-7f41-438e-9c31-efef13f636ea.jpg)
 
 ### Reflection
-\The hardest thing about this part of this project was the code part and getting the color to change at diffret distances in the project. And the fact that i kept having to go in and change things constantly when it was just a simple camma made my life way harder than it had to be. Overall now i undrstand what ground is and how it works with making things work.
-
+this was the hardest assignment of all because it used all of the components of our first 3 assighnments but it made it way eisier when i had a partner who could help me bring the project together when i did not know things. it made it way better and i felt like i was doing more than i could handle.
