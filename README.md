@@ -4,8 +4,7 @@ This repository will actually serve as a aid to help you get started with your o
 * [Table of Contents](#TableOfContents)
 * [Hello_CircuitPython](#Multi-Part Design Studios)
 * [CircuitPython_Servo](#Swing-Arm)
-* [CircuitPython_LCD](#CircuitPython_LCD)
-* [NextAssignmentGoesHere](#NextAssignment)
+* [CircuitPython_LCD](#Teamwork Makes the Dream Work)
 ---
 
 ## Multi-Part Design Studios
