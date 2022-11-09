@@ -7,4 +7,4 @@ dot.brightness = 0.9
 print("Make it red!")
 
 while True:
-    dot.fill((255, 0, 0))
+    dot.fill((255, 0, 255))
